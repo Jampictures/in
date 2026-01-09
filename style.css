@@ -1,3 +1,4 @@
+/* ===== Base ===== */
 *{margin:0;padding:0;box-sizing:border-box}
 
 :root{
@@ -33,6 +34,7 @@ body[data-lang="kn"]{font-family:'Noto Sans Kannada',sans-serif}
 
 .container{max-width:1200px;margin:0 auto;padding:0 20px}
 
+/* ===== Header / Nav ===== */
 .site-header{
   background:var(--bg-secondary);
   box-shadow:0 4px 6px -1px rgba(0,0,0,0.3);
@@ -86,6 +88,7 @@ body[data-lang="kn"]{font-family:'Noto Sans Kannada',sans-serif}
 }
 .theme-toggle:hover,.lang-toggle:hover{background:var(--accent);color:#000;border-color:var(--accent)}
 
+/* ===== Hero ===== */
 .hero{
   padding:80px 0 60px;
   position:relative;
@@ -121,6 +124,7 @@ body[data-lang="kn"]{font-family:'Noto Sans Kannada',sans-serif}
   color:var(--text-secondary);
   max-width:760px;
 }
+
 .btn-primary{
   display:inline-block;
   padding:14px 32px;
@@ -136,6 +140,7 @@ body[data-lang="kn"]{font-family:'Noto Sans Kannada',sans-serif}
 }
 .btn-primary:hover{transform:translateY(-2px);box-shadow:0 10px 25px rgba(249,115,22,.4)}
 
+/* ===== Marquee ===== */
 .marquee-section{
   background:var(--bg-secondary);
   padding:16px 0;
@@ -158,6 +163,7 @@ body[data-lang="kn"]{font-family:'Noto Sans Kannada',sans-serif}
 }
 @keyframes marquee{0%{transform:translateX(0)}100%{transform:translateX(-50%)}}
 
+/* ===== Services ===== */
 .services-section{padding:80px 0}
 .section-title{text-align:center;font-size:36px;margin-bottom:50px}
 
@@ -186,6 +192,7 @@ body[data-lang="kn"]{font-family:'Noto Sans Kannada',sans-serif}
 .service-info h3{font-size:20px;margin-bottom:10px;color:var(--accent)}
 .service-info p{font-size:14px;color:var(--text-secondary);line-height:1.7}
 
+/* ===== Contact ===== */
 .contact-section{
   background:var(--bg-card);
   border:1px solid var(--border);
@@ -196,22 +203,59 @@ body[data-lang="kn"]{font-family:'Noto Sans Kannada',sans-serif}
 }
 .contact-section h2{font-size:32px;margin-bottom:24px}
 .contact-section p{color:var(--text-secondary);margin-bottom:12px;font-size:16px}
-.contact-section a{color:var(--accent);text-decoration:none}
+
+/* Normal links (email/phone) */
+.contact-section a:not(.btn-whatsapp):not(.btn-map){
+  color:var(--accent);
+  text-decoration:none;
+}
 
 .contact-buttons{display:flex;gap:16px;justify-content:center;margin-top:26px;flex-wrap:wrap}
+
 .btn-whatsapp,.btn-map{
-  display:inline-flex;align-items:center;gap:10px;
-  padding:14px 28px;border-radius:999px;
-  font-weight:700;font-size:13px;
-  text-transform:uppercase;text-decoration:none;
-  transition:transform .2s, box-shadow .2s;
+  display:inline-flex;
+  align-items:center;
+  gap:10px;
+  padding:14px 28px;
+  border-radius:999px;
+  font-weight:700;
+  font-size:13px;
+  text-transform:uppercase;
+  text-decoration:none;
+  border:1px solid rgba(148,163,184,0.22);
+  background:rgba(17,24,39,0.75);
+  color:#fff;
+  backdrop-filter:blur(10px);
+  transition:transform .2s, box-shadow .2s, border-color .2s, background .2s;
 }
-.btn-whatsapp{background:#128C7E;color:#fff;box-shadow:0 4px 12px rgba(18,140,126,.3)}
-.btn-whatsapp:hover{transform:translateY(-2px);box-shadow:0 8px 20px rgba(18,140,126,.45)}
-.btn-map{background:#EA4335;color:#fff;box-shadow:0 4px 12px rgba(234,67,53,.3)}
-.btn-map:hover{transform:translateY(-2px);box-shadow:0 8px 20px rgba(234,67,53,.45)}
+
+/* Force white text on anchor buttons in all states */
+.contact-buttons a.btn-whatsapp,
+.contact-buttons a.btn-whatsapp:visited,
+.contact-buttons a.btn-whatsapp:hover,
+.contact-buttons a.btn-whatsapp:active,
+.contact-buttons a.btn-map,
+.contact-buttons a.btn-map:visited,
+.contact-buttons a.btn-map:hover,
+.contact-buttons a.btn-map:active{
+  color:#fff !important;
+  text-decoration:none;
+}
+
+.btn-whatsapp:hover,.btn-map:hover{
+  transform:translateY(-2px);
+  border-color:var(--accent);
+  box-shadow:0 12px 30px rgba(0,0,0,.35);
+  background:rgba(17,24,39,0.95);
+}
+
+/* optional icon tint */
+.btn-whatsapp .icon{color:#25D366}
+.btn-map .icon{color:var(--accent)}
+
 .icon{font-size:16px}
 
+/* ===== Footer ===== */
 .site-footer{
   background:var(--bg-secondary);
   color:var(--text-secondary);
@@ -223,11 +267,14 @@ body[data-lang="kn"]{font-family:'Noto Sans Kannada',sans-serif}
 .site-footer a{color:var(--text-secondary);text-decoration:none}
 .site-footer a:hover{color:var(--accent)}
 
+/* ===== Responsive ===== */
 @media (max-width: 900px){
   .services-grid{grid-template-columns:1fr 1fr}
 }
+
 @media (max-width: 768px){
   .mobile-menu-btn{display:block}
+
   .nav-menu{
     position:fixed;top:0;left:-100%;
     width:280px;height:100vh;
@@ -240,8 +287,17 @@ body[data-lang="kn"]{font-family:'Noto Sans Kannada',sans-serif}
   .nav-menu ul{flex-direction:column;gap:0}
   .nav-menu li{border-bottom:1px solid var(--border)}
   .nav-menu a{display:block;padding:16px 24px}
+
   .hero-content h2{font-size:32px}
   .services-grid{grid-template-columns:1fr}
-  .theme-lang-controls{position:fixed;bottom:20px;right:20px;flex-direction:column;z-index:100}
+
+  .theme-lang-controls{
+    position:fixed;
+    bottom:20px;
+    right:20px;
+    flex-direction:column;
+    z-index:100;
+  }
+
   .contact-buttons{flex-direction:column;align-items:center}
 }
